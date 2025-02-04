@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterComponent } from '../../shared/atoms/character/character.component';
+import { map } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -14,21 +15,37 @@ import { CharacterComponent } from '../../shared/atoms/character/character.compo
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  /**
+   * Constructor HomeComponent
+   * 
+   * @param {CharactersService} _charactersServices 
+   * @param {MatSnackBar} _snackBar
+   * @memberof HomeComponent
+   */
   constructor(
     private _charactersServices: CharactersService,
     private _snackBar: MatSnackBar
   ) {
-    this._charactersServices.getCharacters().subscribe((data) => {
-      this.result = data.data.results;
-      console.log("LOS DATOS SON ", data.data.results);
+    this._charactersServices.getCharacters()
+    .pipe(
+      map((result) => {
+        return result.data.results
+      })
+    )
+    .subscribe((data) => {
+      this.result = data;
+      console.log("LOS DATOS SON ", data);
     });
   }
 
+  /**
+   * Listado del servicio getCharactersById
+   * 
+   * @public
+   * @type {any[]}
+   * @memberof HomeComponent
+   */
   public result: any[] = [];
-
-  public select: any;
-
 
   public onClickData(event: any) {
     this._charactersServices.getCharactersById(event.id).subscribe((data) => {

@@ -9,10 +9,10 @@ export class CharactersService {
   constructor(private _httpClient:HttpClient) { }
 
   public getCharacters(){
-    return this._httpClient.get<any>("http://localhost:8083/mike");
+    return this._httpClient.get<any>("http://localhost:8083/characters");
   }
 
   public getCharactersById(id:number){
-    return this._httpClient.post<any>("http://localhost:8083/mikeId",{id});
+    return this._httpClient.post<any>("http://localhost:8083/characterById",{id});
   }
 }
