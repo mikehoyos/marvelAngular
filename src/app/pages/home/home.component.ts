@@ -53,7 +53,7 @@ export class HomeComponent {
       sessionStorage.setItem("character", JSON.stringify(select));
 
       this._snackBar.openFromComponent(CharacterComponent, {
-        duration: 5000,
+        duration: 6000,
       });
     });
   }
