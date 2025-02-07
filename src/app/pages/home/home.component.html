@@ -1,8 +1,21 @@
-<div class="all-container">
-    <div class="list-container">
+<div>
+    <button class="btnBit"(click)="abrirBitacora()">BITACORA</button>
+    <router-outlet></router-outlet>
+</div>
+<div>
+    <button class="btnChar"(click)="abrirCharacter()">Character</button>
+    <router-outlet></router-outlet>
+</div>
+    <div *ngIf="mostrarContenedorCha" class="all-container"> <div class="list-container">
         <div class="container" *ngFor="let data of result" (click)="onClickData(data)">
             <div class="data-id">{{data.name}}</div>
+            <div class="data-id">{{data.id}}</div>
         </div>
     </div>
 </div>
-
+<div *ngIf="mostrarContenedor" class="all-container-bit"> <div class="list-containe-bit">
+    <div class="container" *ngFor="let data of result" (click)="onClickData(data)">
+        <div class="data-id">{{data.name}}</div>
+        <div class="data-id">{{data.id}}</div>
+    </div>
+</div>

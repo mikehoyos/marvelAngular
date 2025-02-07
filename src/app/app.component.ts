@@ -4,6 +4,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { CharactersService } from './shared/services/characters.service';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { InterceptorService } from './shared/interceptor/interceptor.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
